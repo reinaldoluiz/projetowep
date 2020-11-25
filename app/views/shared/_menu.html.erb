@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="vitrine.html">Home <span class="sr-only">(current)</span></a>
+              <%= link_to 'Home', root_path , class: "nav-link"%>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -30,6 +30,11 @@
           </form>
         </div>
         <div>
+          <% if user_signed_in? %>
             <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar rounded" alt="avatar">
+            <%= link_to 'Sair', destroy_user_session_path,  :method => :delete%>
+          <% else%>
+            <%= link_to 'Entrar', new_user_session_path%>
+          <% end%>
         </div>
     </nav>
