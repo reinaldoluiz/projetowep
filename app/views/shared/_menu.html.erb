@@ -1,26 +1,28 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#"><img src="https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-original-577x577/s3/032013/submarino.png?itok=0YI_8pSg" alt=""></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <%= link_to 'Home', root_path , class: "nav-link"%>
-            </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-        </div>
-        <div>
-          <% if user_signed_in? %>
-            <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar rounded" alt="avatar">
-            <%= link_to 'Sair', destroy_user_session_path,  :method => :delete%>
-          <% else%>
-            <%= link_to 'Entrar', new_user_session_path%>
-          <% end%>
-        </div>
-    </nav>
+  <%= link_to 'Loja Virtual', root_path, class:'navbar-brand' %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <%= link_to 'Produtos', products_path, class:'nav-link'%>
+      </li>
+    </ul>
+  </div>
+  <div class="nav-item">
+    <%= form_with url: search_path, method: :get, local:true do |f| %>
+      <%= f.label :q, 'Busca:' %>
+      <%= f.text_field :q%>
+      <%= f.submit 'Pesquisar',class:'btn btn-outline-success my-2 my-sm-0' %>
+    <% end %>
+  </div>
+  <div class="nav-item">
+      <% if user_signed_in? %>
+        <%= current_user.name%>
+        <%= link_to 'Sair', destroy_user_session_path,  :method => :delete%>
+      <% else%>
+       <%= link_to 'Entrar', new_user_session_path%>
+      <% end%>
+  </div>
+</nav>

@@ -44,6 +44,13 @@
     display: flex;
     flex-direction: row!important;
 }
+.products{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding: 2%;
+    width: 100%;
+}
 
 .card-show img{
     width: 20%;

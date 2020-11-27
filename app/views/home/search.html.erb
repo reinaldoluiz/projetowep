@@ -1,0 +1,18 @@
+ <h1>Resultados da busca</h1>
+  <section class='products'>
+    <% @products.each do |product| %>
+      <div class="card" style="width: 250px;">
+     <% if product.image.attached?%>
+      <%= image_tag product.image %>
+     <%else%>
+      <%= image_tag 'https://via.placeholder.com/400.png' %>
+     <%end%>
+      <div class="card-body">
+        <h5 class="card-title"><%= product.name%></h5>
+        <p class="card-text"><%= product.describe%></p>
+        <p class="card-text"><%= product.category%></p>
+        <%= link_to 'Detalhes', product_path(id: product.id), class:"btn btn-outline-secondary" %>
+      </div>
+    </div>
+    <% end %>
+  </section>

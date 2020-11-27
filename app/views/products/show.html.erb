@@ -1,0 +1,21 @@
+
+  <div class="card" style="width: 100%;">
+  <% if @product.image.attached?%>
+      <%= image_tag @product.image %>
+     <%else%>
+      <%= image_tag 'https://via.placeholder.com/400.png' %>
+  <%end%>
+  <div class="card-body">
+    <h3 class="card-title"><%= @product.name%></h3>
+    <h2 class="card-title"><%=number_to_currency @product.price%></h2>
+    <p class="card-text"><%= @product.category%></p>
+    <p class="card-text"><%= @product.describe%></p>
+  </div>
+  
+  
+</div>
+<div class="card card-body">
+  <%= link_to 'Voltar', products_path, class:'btn btn-info'%>
+</div>
+
+

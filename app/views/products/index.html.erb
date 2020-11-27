@@ -1,0 +1,29 @@
+<div>
+
+<section>
+  <%= link_to 'Criar novo produto', new_product_path, class:"btn btn-outline-success" %>
+</section>
+
+<section class='products'>
+  
+  <% if @products.empty?%>
+    <p>Sem produto por enquanto</p>
+  <%else%> 
+  <% @products.each do |product|%>
+    <div class="card" style="width:250px">
+     <% if product.image.attached?%>
+      <%= image_tag product.image, class:"card-img-top" %>
+     <%else%>
+      <%= image_tag 'https://via.placeholder.com/400.png' %>
+     <%end%>
+      <div class="card-body">
+        <h5 class="card-title"><%= product.name%></h5>
+        <p class="card-text"><%= product.describe%></p>
+        <p class="card-text"><%= product.category%></p>
+        <%= link_to 'Detalhes', product_path(id: product.id), class:"btn btn-outline-secondary" %>
+      </div>
+    </div>
+  <%end%>
+<%end%>
+</section>
+</div>
