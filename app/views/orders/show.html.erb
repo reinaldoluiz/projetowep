@@ -1,0 +1,12 @@
+<div class="card" style="width: 100%;">
+  <div class="card-body">
+
+    <h3 class="card-title"><%= @order.product.name%></h3>
+    <h2 class="card-title"><%=number_to_currency @order.product.price%></h2>
+    <p class="card-text"><%= @order.product.category%></p>
+    <p class="card-text"><%= @order.product.describe%></p>
+  </div>
+</div>
+<div class="card card-body">
+  <%= link_to 'Voltar', products_path, class:'btn btn-info'%>
+</div>
